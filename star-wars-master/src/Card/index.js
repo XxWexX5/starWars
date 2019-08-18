@@ -34,24 +34,22 @@ export default class Card extends Component {
   renderImage = name => {
     switch (name) {
       case "R2-D2":
-        return <img src={R2} alt="R2 - D2" width="90px" height="100px" />;
+        return <img src={R2} alt="R2 - D2" width="45px" height="60px" />;
       case "Obi-Wan Kenobi":
-        return <img src={Kenobi} alt="Kenobi" width="90px" height="100px" />;
+        return <img src={Kenobi} alt="Kenobi" width="45px" height="60px" />;
       case "Luke Skywalker":
-        return <img src={Luke} alt="Luke" width="90px" height="100px" />;
+        return <img src={Luke} alt="Luke" width="45px" height="60px" />;
       case "Biggs Darklighter":
-        return <img src={Biggs} alt="Biggs" width="90px" height="100px" />;
+        return <img src={Biggs} alt="Biggs" width="45px" height="60px" />;
       case "Leia Organa":
-        return <img src={Leia} alt="Leia" width="90px" height="100px" />;
+        return <img src={Leia} alt="Leia" width="45px" height="60px" />;
       case "Darth Vader":
-        return (
-          <img src={Darth} alt="Darth Vader" width="90px" height="100px" />
-        );
+        return <img src={Darth} alt="Darth Vader" width="45px" height="60px" />;
       case "C-3PO":
-        return <img src={c3p0} alt="C-3PO" width="90px" height="100px" />;
+        return <img src={c3p0} alt="C-3PO" width="45px" height="60px" />;
       default:
         return (
-          <img src={anonymous} alt="anonymous" width="90px" height="100px" />
+          <img src={anonymous} alt="anonymous" width="45px" height="60px" />
         );
     }
   };
@@ -106,7 +104,7 @@ export default class Card extends Component {
             target="_blank"
             className="button"
           >
-            <Paper />
+            <Paper width={35} height={35} />
             Veja mais
           </a>
         </div>

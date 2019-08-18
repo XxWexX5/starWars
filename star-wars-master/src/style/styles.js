@@ -21,11 +21,17 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  .page-not-loaded {
+    color: #ffffff;
+  }
 `;
 
 export const ImageBottom = styled.div`
@@ -77,10 +83,11 @@ export const CardStyle = styled.div`
   }
 
   width: 100%;
-  max-width: 450px;
+  max-width: 280px;
+  margin: 10px;
   background-color: #ffffff;
   border-radius: 15px;
-  padding: 30px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,11 +97,11 @@ export const CardStyle = styled.div`
 
   .circle {
     display: inline-block;
-    padding: 25px 35px;
+    padding: 15px 25px;
     border-radius: 100%;
     border: solid 4px ${props => props.borderColor};
     background-color: ${props => props.color};
-    margin: 25px 0;
+    margin: 15px 0;
 
     img {
       object-fit: contain;
@@ -103,9 +110,9 @@ export const CardStyle = styled.div`
   }
 
   .title {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: bold;
-    margin: 10px 0 25px;
+    margin: 0 0 15px;
     color: ${props => props.color};
 
     &:after {
@@ -123,8 +130,8 @@ export const CardStyle = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    font-size: 1.5rem;
-    line-height: 1.3em;
+    font-size: 1rem;
+    line-height: 1.5em;
 
     strong {
       font-weight: normal;
@@ -141,8 +148,8 @@ export const CardStyle = styled.div`
     position: relative;
 
     svg {
-      width: 42px;
-      top: -15px;
+      width: 28px;
+      top: -5px;
       right: 0;
       position: absolute;
 
@@ -153,6 +160,7 @@ export const CardStyle = styled.div`
     }
 
     a.button {
+      font-size: 14px;
       font-weight: bold;
       text-decoration: none;
       border: 2px solid ${props => props.color};
