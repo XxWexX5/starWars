@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import api from "./services/api";
 
-import Dice from "./images/dice.svg";
-import Robot from "./images/robot.gif";
-
 import Card from "./Card";
 
 import "bootstrap/dist/css/bootstrap.css";
 
 import { GlobalStyle, Container, ImageBottom } from "./style/styles";
 
+import page404 from "./images/404.png";
+
+import FilterStarWars from "./FilterStarWars";
+
 export default class App extends Component {
   state = {
-    characters: []
+    characters: [],
+    filterName: "",
+    filterGender: "",
+    loading: false
   };
 
   componentDidMount() {
@@ -20,16 +24,16 @@ export default class App extends Component {
   }
 
   loadcharacter = async () => {
-    const numberRandom = Math.floor(Math.random() * 10 + 1);
-
     const response = await api.get();
 
     this.setState(
       {
-        characters: response.data.results.sort(this.sortByFilms("films"))
+        characters: response.data.results.sort(this.sortByFilms("films")),
+        loading: true
       },
       this.setState({
-        characters: this.state.characters.sort(this.sortByProperty("name"))
+        characters: this.state.characters.sort(this.sortByProperty("name")),
+        loading: false
       })
     );
   };
@@ -54,22 +58,68 @@ export default class App extends Component {
     };
   };
 
+  filterField = (name, gender) => {
+    console.log(name.legth, gender.legth);
+
+    if (name && gender) {
+      return this.setState({
+        characters: this.state.characters.filter(
+          character => character.name === name && character.gender === gender
+        )
+      });
+    }
+
+    if (name) {
+      return this.setState({
+        characters: this.state.characters.filter(
+          character => character.name === name
+        )
+      });
+    }
+
+    if (gender) {
+      return this.setState({
+        characters: this.state.characters.filter(
+          character => character.gender === gender
+        )
+      });
+    }
+  };
+
   render() {
+    const { filterName, filterGender, characters, loading } = this.state;
+
+    if (!!loading && characters.length === 0) {
+      return (
+        <a href="https://github.com/XxWexX5" target="_blank">
+          <img src={page404} alt="Nada encontrado" className="w-100" />
+        </a>
+      );
+    }
+
     return (
       <div className="container-fluid">
+        {characters.length > 0 ? (
+          <div className="row">
+            <div className="col-12">
+              <FilterStarWars filterField={this.filterField} />
+            </div>
+          </div>
+        ) : null}
+
         <div className="row">
           <div className="col-12">
             <Container>
               <GlobalStyle whiteColor />
-
-              {this.state.characters.length > 0 ? (
-                this.state.characters.map(character => (
+              {!!loading ? (
+                characters.map(character => (
                   <Card
                     name={character.name}
                     height={character.height}
                     mass={character.mass}
                     gender={character.gender}
                     birth={character.birth_year}
+                    key={character.id}
                   />
                 ))
               ) : (
