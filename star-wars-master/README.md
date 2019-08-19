@@ -1,7 +1,7 @@
 #Teste de Frontend React
 
 - Baixe o repositório;
-- Entre no diretório;
+- Entre no diretório: star-wars-master;
 - Execute: yarn;
 - Execute: yarn start;
 - Pronto =);
