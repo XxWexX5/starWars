@@ -1,4 +1,4 @@
-#Teste de Frontend React [SOMENTE ALOCADO]
+#Teste de Frontend React
 
 - Baixe o repositório;
 - Entre no diretório;
