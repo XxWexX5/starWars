@@ -5,7 +5,7 @@ import Card from "./Card";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-import { GlobalStyle, Container, ImageBottom } from "./style/styles";
+import { GlobalStyle, Container } from "./style/styles";
 
 import page404 from "./images/404.png";
 
@@ -87,11 +87,15 @@ export default class App extends Component {
   };
 
   render() {
-    const { filterName, filterGender, characters, loading } = this.state;
+    const { characters, loading } = this.state;
 
     if (!!loading && characters.length === 0) {
       return (
-        <a href="https://github.com/XxWexX5" target="_blank">
+        <a
+          href="https://github.com/XxWexX5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={page404} alt="Nada encontrado" className="w-100" />
         </a>
       );
@@ -119,6 +123,7 @@ export default class App extends Component {
                     mass={character.mass}
                     gender={character.gender}
                     birth={character.birth_year}
+                    films={character.films}
                     key={character.id}
                   />
                 ))
@@ -129,6 +134,7 @@ export default class App extends Component {
                   <img
                     src="https://media2.giphy.com/media/XLEbg1rCagFjy/giphy.gif"
                     width="500"
+                    alt="Animação robô"
                   />
                 </div>
               )}

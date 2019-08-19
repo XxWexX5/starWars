@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
+
 import { ReactComponent as Paper } from "./images/paper.svg";
 
 import anonymous from "../images/anonymous.png";
@@ -59,7 +61,7 @@ export default class Card extends Component {
   };
 
   render() {
-    const { name, height, mass, gender, birth } = this.props;
+    const { name, height, mass, gender, birth, films } = this.props;
 
     const randomColor = require("randomcolor");
     const color = randomColor({
@@ -99,14 +101,13 @@ export default class Card extends Component {
         </div>
 
         <div className="content-link">
-          <a
-            href="https://www.youtube.com/watch?v=-5f7oR0vMAM"
-            target="_blank"
+          <Link
+            to={{ pathname: "/filmes", state: { data: films } }}
             className="button"
           >
             <Paper width={35} height={35} />
             Veja mais
-          </a>
+          </Link>
         </div>
       </CardStyle>
     );
