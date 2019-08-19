@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from "react";
 
+import Moment from 'react-moment';
+
 import { Link } from "react-router-dom";
 
 import { api2 } from "../services/api";
@@ -94,7 +96,7 @@ export default class Films extends Component {
 
                           <div>
                             <strong>Data:</strong>{" "}
-                            <span>{film.release_date}</span>
+                            <span><Moment format="DD/MM/YYYY">{film.release_date}</Moment></span>
                           </div>
                         </div>
 
